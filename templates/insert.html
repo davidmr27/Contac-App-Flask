@@ -32,18 +32,37 @@
                 {{ form.name.label }}
                 <!-- <input type="text" name="fName" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Jaun"> -->
                 {{ form.name(id='inputName', class='form-control') }}
+                <!-- Mostrando los errores -->
+                {% if form.name.errors %}
+                    {% for error in form.name.errors %}
+                        <br>
+                        <div class="alert alert-danger">{{ error }}</div class="alert ">
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-group">
                 <!-- <label for="inputLastName">LastName</label> -->
                 {{ form.lname.label }}
                 <!-- <input type="text" name="fLastName" class="form-control" id="inputLastName" aria-describedby="lastnameHelp" placeholder="Perez"> -->
                 {{ form.lname(id='inputLastName', class='form-control')}}
+                {% if form.lname.errors %}
+                    {% for error in form.lname.errors %}
+                        <br>
+                        <div class="alert alert-danger">{{ error }}</div class="alert ">
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-group">
                 <!-- <label for="phone">Phone Number</label> -->
                 {{ form.phone.label }}
                 <!-- <input type="tel" name="fPhone" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="63040578"> -->
                 {{ form.phone(id='inputPhone', class='form-control') }}
+                {% if form.phone.errors %}
+                    {% for error in form.phone.errors %}
+                        <br>
+                        <div class="alert alert-danger">{{ error }}</div class="alert ">
+                    {% endfor %}
+                {% endif %}
             </div>
             <!-- <button type="submit" class="btn btn-primary">Add contact</button> -->
             {{ form.submit(class='btn btn-primary')}}
