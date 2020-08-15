@@ -37,8 +37,9 @@ def all_contacts():
     """Estamo obteniendo los datos que están en la tabla contactos"""
     #TODO: Filtrar cuando por usuario que inicie sesión
     cur = mysql.connect.cursor()
-    query = "SELECT * FROM contactos;"
-    cur.executer(query)
-    contacts=cur.fetchall()
+    query = "SELECT nombre, apellido, numero FROM contactos;"
+    cur.execute(query)
+    contacts = cur.fetchall()
     cur.close()
+    print(contacts)
     return render_template('allcontacts.html', contacts=contacts)
