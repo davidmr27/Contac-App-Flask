@@ -30,3 +30,15 @@ def add_contact():
         cur.close()
         return render_template('success.html')
     return render_template('insert.html', form=form)
+
+
+@app.route("/all_contacts")
+def all_contacts():
+    """Estamo obteniendo los datos que están en la tabla contactos"""
+    #TODO: Filtrar cuando por usuario que inicie sesión
+    cur = mysql.connect.cursor()
+    query = "SELECT * FROM contactos;"
+    cur.executer(query)
+    contacts=cur.fetchall()
+    cur.close()
+    return render_template('allcontacts.html', contacts=contacts)
