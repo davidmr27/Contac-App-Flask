@@ -2,42 +2,27 @@
 {% block title %}All contacts{% endblock %}
 
 {% block body %}
-{% block navbar%}
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Contact</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="" class="nav-link">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">Registro</a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">Inicia sesión</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-{% endblock %}
+{% include 'views/navbar.html' %}
 <br>
 <div class="container">
+  {% if get_flashed_messages() %}
+      {% for message in get_flashed_messages() %}
+      <div class="alert alert-success" role="alert">
+	{{ message }}
+      </div>
+      {% endfor %}
+   {% endif %}
     <div class="d-flex flex-wrap">
         {% for contact in contacts %}
         <div class="card ml-2 mb-2">
             <div class="card-body">
-                <h5 class="card-title">{{ contact[0] }} {{ contact[1] }}</span></h5>
-                <p class="card-text">{{ contact[2] }}</p>
-                <a href="#" class="btn btn-success">Modificar Contacto</a>
-                <a href="#" class="btn btn-danger">Eliminar Contacto</a>
+                <h5 class="card-title">{{ contact[1] }} {{ contact[2] }}</span></h5>
+                <p class="card-text">{{ contact[3] }}</p>
+                <a href="/edit/{{contact[0]}}" class="btn btn-success">Modificar Contacto</a>
+                <a href="/delete/{{contact[0]}}" class="btn btn-danger">Eliminar Contacto</a>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock %}
