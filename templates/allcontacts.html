@@ -24,5 +24,10 @@
         </div>
         {% endfor %}
     </div>
+    {% if current_user.is_authenticated %}
+       <div class="alert alert-success" role="alert">
+	{{ current_user.id }}
+      </div>
+    {% endif %}
 </div>
 {% endblock %}
