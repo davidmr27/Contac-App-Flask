@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+{% include 'views/navbar.html' %}
+<br>
+<div class="container">
+<form method="POST" action="/login">
+    {{ form.csrf_token }}
+
+    <div class="form-group">
+      {{ form.user.label }}
+      {{ form.user(id='inputUser', class='form-control')}}
+    </div>
+    <div class="form-group">
+      {{ form.password.label }}
+      {{ form.password(id='inputPass', class='form-control')}}
+    </div>
+    <div class="form-group">
+      {{ form.submit(class='btn btn-primary', value='Sing up') }}
+    </div>
+  </form>
+</div>
+{% endblock %}
+
