@@ -1,8 +1,11 @@
 from flask_login import UserMixin
 
 class User(UserMixin):
-     def __init__(self, id=None, ):
+     user = []
+
+     def __init__(self, id, username    ):
           super().__init__()
           self.id = id 
+          self.username = username
 
 
